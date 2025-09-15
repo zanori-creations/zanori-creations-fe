@@ -1,42 +1,49 @@
 import React from 'react';
+import Image from 'next/image';
 
 const ZanoriLogo: React.FC<{ className?: string }> = ({ className = "" }) => {
   return (
     <div className={`flex flex-col items-center ${className}`}>
-      {/* Crown and Emblem */}
-      <div className="relative mb-6">
-        {/* Crown */}
-        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-          <div className="w-4 h-3 bg-black relative">
-            <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-b-[8px] border-l-transparent border-r-transparent border-b-black"></div>
-            <div className="absolute -top-1 left-0 w-0 h-0 border-l-[3px] border-r-[3px] border-b-[6px] border-l-transparent border-r-transparent border-b-black"></div>
-            <div className="absolute -top-1 right-0 w-0 h-0 border-l-[3px] border-r-[3px] border-b-[6px] border-l-transparent border-r-transparent border-b-black"></div>
-          </div>
+      {/* Logo Image with enhanced animations */}
+      <div className="mb-12 relative group animate-scale-in">
+        {/* Glow effect */}
+        <div className="absolute inset-0 bg-white/10 rounded-full blur-2xl group-hover:blur-3xl transition-all duration-700 animate-glow"></div>
+        
+        {/* Main logo container */}
+        <div className="relative glass rounded-full p-8 hover-lift transition-all duration-500 group-hover:scale-110">
+          <Image
+            src="/assets/logo.jpeg"
+            alt="Zanori Logo"
+            width={120}
+            height={120}
+            className="object-contain relative z-10 transition-transform duration-500 group-hover:rotate-3"
+            priority
+          />
         </div>
         
-        {/* Main Emblem */}
-        <div className="relative w-16 h-20">
-          {/* Outer curved shape */}
-          <div className="absolute inset-0">
-            <svg width="64" height="80" viewBox="0 0 64 80" className="w-full h-full">
-              <path
-                d="M32 2C45 8 58 20 58 40C58 50 52 58 45 62C38 66 32 68 32 68C32 68 26 66 19 62C12 58 6 50 6 40C6 20 19 8 32 2Z"
-                fill="black"
-              />
-              {/* Inner curved shape */}
-              <path
-                d="M32 8C40 12 48 20 48 36C48 44 44 50 38 53C32 56 32 56 32 56C32 56 32 56 26 53C20 50 16 44 16 36C16 20 24 12 32 8Z"
-                fill="black"
-              />
-            </svg>
-          </div>
-        </div>
+        {/* Animated border */}
+        <div className="absolute inset-0 rounded-full border border-white/20 group-hover:border-white/50 transition-all duration-700 animate-spin-slow"></div>
+        
+        {/* Floating particles */}
+        <div className="absolute -top-2 -right-2 w-2 h-2 bg-white/40 rounded-full animate-bounce-slow"></div>
+        <div className="absolute -bottom-2 -left-2 w-1.5 h-1.5 bg-white/30 rounded-full animate-bounce-slow" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-1/2 -right-4 w-1 h-1 bg-white/20 rounded-full animate-bounce-slow" style={{animationDelay: '2s'}}></div>
       </div>
       
-      {/* Brand Name */}
-      <h1 className="text-4xl font-serif font-bold text-black tracking-wider">
+      {/* Brand Name with staggered animation */}
+      <h1 className="text-6xl md:text-7xl font-serif font-bold text-gradient tracking-wider mb-4 animate-fade-in" style={{animationDelay: '0.3s'}}>
         ZANORI
       </h1>
+      
+      {/* Animated underline */}
+      <div className="w-32 h-0.5 bg-gradient-to-r from-transparent via-white/60 to-transparent animate-fade-in" style={{animationDelay: '0.6s'}}></div>
+      
+      {/* Decorative elements */}
+      <div className="flex space-x-2 mt-6 animate-fade-in" style={{animationDelay: '0.9s'}}>
+        <div className="w-1 h-1 bg-white/40 rounded-full animate-pulse-slow"></div>
+        <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse-slow" style={{animationDelay: '0.5s'}}></div>
+        <div className="w-1 h-1 bg-white/40 rounded-full animate-pulse-slow" style={{animationDelay: '1s'}}></div>
+      </div>
     </div>
   );
 };
