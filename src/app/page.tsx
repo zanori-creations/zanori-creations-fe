@@ -11,7 +11,7 @@ export default function Home() {
         <div className="absolute inset-0 stars3"></div>
         
         {/* Central Celestial Body */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full celestial-body">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full celestial-body">
           <div className="absolute inset-0 rounded-full celestial-glow"></div>
         </div>
       </div>
