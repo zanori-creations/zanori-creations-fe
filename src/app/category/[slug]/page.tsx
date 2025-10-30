@@ -1,12 +1,13 @@
 import React from 'react';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ProductCard from '@/components/ProductCard';
 import productsData from '@/data/products.json';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -15,8 +16,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CategoryPage({ params }: PageProps) {
-  const category = productsData.categories.find((cat) => cat.slug === params.slug);
+export default async function CategoryPage({ params }: PageProps) {
+  const { slug } = await params;
+  const category = productsData.categories.find((cat) => cat.slug === slug);
 
   if (!category) {
     notFound();
@@ -33,9 +35,9 @@ export default function CategoryPage({ params }: PageProps) {
         <nav className="mb-8 text-sm">
           <ol className="flex items-center space-x-2">
             <li>
-              <a href="/" className="hover:opacity-60 transition-opacity">
+              <Link href="/" className="hover:opacity-60 transition-opacity">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
               <span className="mx-2">&gt;</span>

@@ -9,18 +9,31 @@ import productsData from '@/data/products.json';
 import { useCartStore } from '@/store/cartStore';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function ProductDetailPage({ params }: PageProps) {
-  const product = productsData.products.find((p) => p.id === params.id);
-  const addItem = useCartStore((state) => state.addItem);
-
+  const [productId, setProductId] = React.useState<string | null>(null);
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  React.useEffect(() => {
+    params.then(({ id }) => setProductId(id));
+  }, [params]);
+
+  const product = React.useMemo(() => {
+    if (!productId) return null;
+    return productsData.products.find((p) => p.id === productId);
+  }, [productId]);
+
+  const addItem = useCartStore((state) => state.addItem);
+
+  if (!productId) {
+    return null; // Loading state
+  }
 
   if (!product) {
     notFound();

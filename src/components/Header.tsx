@@ -3,12 +3,33 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ShoppingBag, Phone } from 'lucide-react';
+import { Menu, X, ShoppingBag, Phone, User } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
+import { useAuthStore } from '@/store/authStore';
+import AuthModal from './AuthModal';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
+  
   const cartCount = useCartStore((state) => state.getTotalItems());
+  const { isAuthenticated, signOut } = useAuthStore();
+
+  const handleSignIn = () => {
+    setAuthMode('signin');
+    setIsAuthModalOpen(true);
+  };
+
+  const handleSignUp = () => {
+    setAuthMode('signup');
+    setIsAuthModalOpen(true);
+  };
+
+  const handleSignOut = () => {
+    signOut();
+    window.location.href = '/';
+  };
 
   const navItems = [
     { name: 'New', href: '/category/new-attires' },
@@ -52,6 +73,53 @@ const Header = () => {
 
           {/* Right Icons */}
           <div className="flex items-center gap-8">
+            {/* Profile Icon with Dropdown */}
+            <div className="relative group">
+              <button 
+                className="relative hover:opacity-60 transition-opacity hover:cursor-pointer" 
+                aria-label="User Profile"
+              >
+                <User size={25} />
+                {isAuthenticated && (
+                  <span className="absolute -bottom-1 -right-1 bg-green-500 rounded-full w-2 h-2" />
+                )}
+              </button>
+
+              {/* Dropdown Menu */}
+              <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-gray-200 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                {isAuthenticated ? (
+                  <>
+                    <Link
+                      href="/profile"
+                      className="block px-4 py-3 text-sm hover:bg-gray-100 transition-colors"
+                    >
+                      My Profile
+                    </Link>
+                    <button
+                      onClick={handleSignOut}
+                      className="w-full text-left px-4 py-3 text-sm hover:bg-gray-100 transition-colors border-t border-gray-200"
+                    >
+                      Sign Out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={handleSignIn}
+                      className="w-full text-left px-4 py-3 text-sm hover:bg-gray-100 transition-colors"
+                    >
+                      Sign In
+                    </button>
+                    <button
+                      onClick={handleSignUp}
+                      className="w-full text-left px-4 py-3 text-sm hover:bg-gray-100 transition-colors border-t border-gray-200"
+                    >
+                      Sign Up
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
             <button className="hover:opacity-60 transition-opacity hover:cursor-pointer" aria-label="Contact">
               <Phone size={25} />
             </button>
@@ -93,6 +161,13 @@ const Header = () => {
           </nav>
         </div>
       )}
+
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)}
+        initialMode={authMode}
+      />
     </header>
   );
 };

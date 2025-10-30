@@ -1,19 +1,25 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingBag, Trash2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useCartStore } from '@/store/cartStore';
+import { useAuthStore } from '@/store/authStore';
+import AuthModal from '@/components/AuthModal';
 
 export default function CartPage() {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  
   const items = useCartStore((state) => state.items);
   const removeItem = useCartStore((state) => state.removeItem);
   const increaseQuantity = useCartStore((state) => state.increaseQuantity);
   const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
   const getTotalPrice = useCartStore((state) => state.getTotalPrice);
   const getTotalItems = useCartStore((state) => state.getTotalItems);
+  
+  const { isAuthenticated, user } = useAuthStore();
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-NG', {
@@ -44,8 +50,15 @@ export default function CartPage() {
   };
 
   const handlePayNow = () => {
-    // Placeholder for payment integration
-    toast.success('Payment functionality coming soon!');
+    if (!isAuthenticated) {
+      setIsAuthModalOpen(true);
+      toast.error('Please sign in to complete your purchase');
+      return;
+    }
+
+    // Proceed with payment (placeholder for now)
+    toast.success(`Processing payment for ${user?.fullName}...`);
+    // Here you would integrate with your payment gateway
   };
 
   // Empty cart state
@@ -187,6 +200,13 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)}
+        initialMode="signin"
+      />
     </div>
   );
 }
