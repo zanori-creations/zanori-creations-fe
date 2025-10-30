@@ -1,0 +1,160 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Leather Jacket",
+      "category": "men-new-arrival",
+      "price": 450000,
+      "description": "Premium leather jacket with modern silhouette",
+      "image": "/assets/itemsimg/prince-akachi-s6tVlDVKz38-unsplash.jpg",
+      "images": [
+        "/assets/itemsimg/prince-akachi-s6tVlDVKz38-unsplash.jpg"
+      ],
+      "colors": ["Black"],
+      "sizes": ["S", "M", "L", "XL"]
+    },
+    {
+      "id": "2",
+      "name": "Classic Suit",
+      "category": "men-wears",
+      "price": 550000,
+      "description": "Tailored suit for the modern gentleman",
+      "image": "/assets/itemsimg/tolu-akinyemi--xlJZ1kNP54-unsplash.jpg",
+      "images": [
+        "/assets/itemsimg/tolu-akinyemi--xlJZ1kNP54-unsplash.jpg"
+      ],
+      "colors": ["Black", "Navy"],
+      "sizes": ["S", "M", "L", "XL"]
+    },
+    {
+      "id": "3",
+      "name": "Designer Blazer",
+      "category": "men-wears",
+      "price": 380000,
+      "description": "Contemporary blazer with refined details",
+      "image": "/assets/itemsimg/tolu-akinyemi-03AGqaKKf8E-unsplash.jpg",
+      "images": [
+        "/assets/itemsimg/tolu-akinyemi-03AGqaKKf8E-unsplash.jpg"
+      ],
+      "colors": ["Charcoal", "Brown"],
+      "sizes": ["S", "M", "L", "XL"]
+    },
+    {
+      "id": "4",
+      "name": "Elegant Dress",
+      "category": "women-new-arrival",
+      "price": 420000,
+      "description": "Sophisticated dress with timeless elegance",
+      "image": "/assets/itemsimg/delight-dzansi-_DmkY-1JqKz38-unsplash.jpg",
+      "images": [
+        "/assets/itemsimg/delight-dzansi-_DmkY-1JqKz38-unsplash.jpg"
+      ],
+      "colors": ["Black", "White"],
+      "sizes": ["XS", "S", "M", "L"]
+    },
+    {
+      "id": "5",
+      "name": "Evening Gown",
+      "category": "women-wears",
+      "price": 680000,
+      "description": "Luxurious evening gown for special occasions",
+      "image": "/assets/itemsimg/delight-dzansi-ztXLvxmoOIY-unsplash.jpg",
+      "images": [
+        "/assets/itemsimg/delight-dzansi-ztXLvxmoOIY-unsplash.jpg"
+      ],
+      "colors": ["Black", "Gold"],
+      "sizes": ["XS", "S", "M", "L"]
+    },
+    {
+      "id": "6",
+      "name": "Large Leather Bag",
+      "category": "new-attires",
+      "price": 280000,
+      "description": "Spacious leather bag with signature weave",
+      "image": "/assets/itemsimg/Large-811816V3OO02783_B.avif",
+      "images": [
+        "/assets/itemsimg/Large-811816V3OO02783_B.avif"
+      ],
+      "colors": ["Brown", "Black"],
+      "sizes": ["One Size"]
+    },
+    {
+      "id": "7",
+      "name": "Structured Handbag",
+      "category": "new-attires",
+      "price": 320000,
+      "description": "Modern handbag with clean lines",
+      "image": "/assets/itemsimg/Large-843996V5LO02945_A.avif",
+      "images": [
+        "/assets/itemsimg/Large-843996V5LO02945_A.avif"
+      ],
+      "colors": ["Cream", "Black"],
+      "sizes": ["One Size"]
+    },
+    {
+      "id": "8",
+      "name": "Signature Clutch",
+      "category": "december-2025",
+      "price": 195000,
+      "description": "Elegant clutch for festive occasions",
+      "image": "/assets/itemsimg/844169V4O922190_B.avif",
+      "images": [
+        "/assets/itemsimg/844169V4O922190_B.avif"
+      ],
+      "colors": ["Gold", "Silver"],
+      "sizes": ["One Size"]
+    },
+    {
+      "id": "9",
+      "name": "Festive Outfit",
+      "category": "december-2025",
+      "price": 520000,
+      "description": "Statement piece for holiday celebrations",
+      "image": "/assets/itemsimg/shedrack-salami-Ba1eGcAFj5w-unsplash.jpg",
+      "images": [
+        "/assets/itemsimg/shedrack-salami-Ba1eGcAFj5w-unsplash.jpg"
+      ],
+      "colors": ["Black", "Red"],
+      "sizes": ["XS", "S", "M", "L", "XL"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "men-new-arrival",
+      "name": "Men's New Arrivals",
+      "slug": "men-new-arrival",
+      "description": "Latest additions to our men's collection"
+    },
+    {
+      "id": "men-wears",
+      "name": "Men's Wears",
+      "slug": "men-wears",
+      "description": "Timeless pieces for the modern man"
+    },
+    {
+      "id": "women-new-arrival",
+      "name": "Women's New Arrivals",
+      "slug": "women-new-arrival",
+      "description": "Fresh styles for the contemporary woman"
+    },
+    {
+      "id": "women-wears",
+      "name": "Women's Wears",
+      "slug": "women-wears",
+      "description": "Elegant essentials for every occasion"
+    },
+    {
+      "id": "new-attires",
+      "name": "New Attires",
+      "slug": "new-attires",
+      "description": "Accessories and statement pieces"
+    },
+    {
+      "id": "december-2025",
+      "name": "December 2025 Styles",
+      "slug": "december-2025",
+      "description": "Exclusive styles for the festive season"
+    }
+  ]
+}
+
